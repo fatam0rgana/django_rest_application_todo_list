@@ -1,17 +1,18 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+<div class="sticky-top container text-center">
+    <div class="row">
+        <div class="col">
+    </div>
+        <div class="col-6">
 <h1>Are you sure?</h1>
 <form method="POST"> {%csrf_token%}
   {{form}}
-  <button type="submit">Submit</button>
+  <button class="btn btn-outline-danger" type="submit">Delete</button>
+  <input class="btn btn-outline-success" type="button" value="Cancel" onclick="history.back()"/>
 </form>
-</body>
-</html>
+            </div>
+        <div class="col">
+        </div>
+</div>
+{% endblock %}

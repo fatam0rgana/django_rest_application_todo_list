@@ -1,18 +1,33 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<h1>Welcome to notes</h1>
+{% extends 'base.html' %}
+{% block content %}
 {% for note in notes %}
-<div>
-    <h2>{{note.title}}</h2>
-</div>
-{% endfor %}
-</body>
-</html>
+    <section>
+        <div class="container-xxl">
+          <div class="row">
+            <span class="border border-dark border-2 rounded"  style="background-color: #D7D7D7;">
+                <div class="row">
+                    <div class="col">
+                      <a href="{% url 'note.edit' pk=note.id %}"><h3>{{note.title}}</h3></a>
+                    </div>
+                    <div class="col-2 align-items-end">
+                      <a id="edit-{{data.id}}" href="{% url 'note.edit' pk=note.id %}">
+                        <img src = "../static/images/icons8-edit-24.svg", alt="Edit" style="padding-right: 60px">
+                      </a>
+                      <a id="delete-{{data.id}}" href="{% url 'note.delete' pk=note.id %}">
+                        <img src = "../static/images/icons8-delete-24.svg", alt="Delete">
+                      </a>
+                    </div>
+                  </div>
+                <div class="row">
+                    <div class="col">
+                      <h5>Description:</h5><p>
+                        {{note.text}}
+                      </p>
+                    </div>
+                </div>
+            </span>
+          </div>
+        </div>
+    </section>
+  {% endfor %}
+{% endblock %}

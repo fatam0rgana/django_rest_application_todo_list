@@ -13,13 +13,13 @@ from .permissions import isOwner
 class NoteApiView(generics.ListAPIView):
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated,)
 
 
 class NoteApiAddView(generics.CreateAPIView):
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated,)
 
 
 class NoteApiEditView(generics.UpdateAPIView):
@@ -33,6 +33,7 @@ class NoteApiDeleteView(generics.DestroyAPIView):
     serializer_class = NoteSerializer
     permission_classes = (isOwner,)
 
+
 class NoteView(LoginRequiredMixin, ListView):
     model = Note
     context_object_name = 'notes'
@@ -41,12 +42,6 @@ class NoteView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return self.request.user.note.all()
-
-
-class DetailsView(DetailView):
-    model = Note
-    context_object_name = 'note'
-    template_name = 'note/note_detail.html'
 
 
 class NoteCreateView(CreateView):
