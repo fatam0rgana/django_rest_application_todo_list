@@ -1,5 +1,3 @@
-from django.views.generic import TemplateView
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
@@ -23,9 +21,4 @@ class LogoutInterfaceView(LogoutView):
 
 class LoginInterfaceView(LoginView):
     template_name = 'home/login.html'
-
-
-class HomeView(LoginRequiredMixin, TemplateView):
-    template_name = 'home/welcome.html'
-    login_url = '/login'
 

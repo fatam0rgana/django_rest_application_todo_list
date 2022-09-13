@@ -10,8 +10,8 @@ class NotesForm(forms.ModelForm):
         fields = ['title', 'text']
         labels = {'title': 'Write your title here:', 'text': 'Write your text here:'}
 
-    def clean_title(self):
+    '''def clean_title(self):
         title = self.cleaned_data['title']
         if 'django' not in title:
             raise ValidationError('django')
-        return title
+        return title'''
